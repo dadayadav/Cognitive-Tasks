@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Memory </title>
+	<link rel="stylesheet" type="text/css" href="stroop.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="mainController" ng-cloak>
+	<section class="home-page" ng-show="homeShow">
+		<div class="title"> 
+			<span class="lightred"> M </span> <span class="lightblue"> E </span> <span class="lightgreen"> M </span>
+			<span class="lightpurple"> O </span> <span class="darkorange"> R </span> <span class="break" class="lightpink"> Y </span>	
+		</div>
+		<div class="desc"> 
+			How long you can remember? <br>
+		 <br>
+			
+		</div>
+		<div class = "instr"> 
+			<span class="instr-title"> 
+				<span> Memory Word Test Instructions: </span>
+				<span class="more" ng-show="plusButtonWord" ng-click="panelConfigWord()"> + </span> <span class="more" ng-show="openWord" ng-click="panelConfigWord()"> - </span>
+			</span>
+			<div class="instr-text" ng-show="openWord">
+				Remember words as many as you can. You have 10 SECONDS for each Image.
+			</div>
+		</div>
+		<div class="instr">
+			<span class="instr-title"> 
+				<span> Memory Numerical Test Instructions: </span>
+				<span class="more" ng-show="plusButtonNum" ng-click="panelConfigNum()"> + </span> <span class="more" ng-show="openNum" ng-click="panelConfigNum()"> - </span>
+			</span>
+			<div class="instr-text" ng-show="openNum">
+				Remember number as many as you can. You have 10 SECONDS for each Image.
+			</div>
+		</div>
+		<div class="instr instr-bottom">
+			<span class="instr-title"> 
+				<span> Memory Image Test Instructions: </span>
+				<span class="more" ng-show="plusButtonImage" ng-click="panelConfigImage()"> + </span> <span class="more" ng-show="openImage" ng-click="panelConfigImage()"> - </span>
+			</span>
+			<div class="instr-text" ng-show="openImage">
+				Remember things name as many as you can. You have 10 SECONDS for each Image.
+			</div>
+		</div>
+
+
+
+		<div>
+			<span ng-click="startMemBtn(2)" class="start-button"> Text Test </span>
+			<span ng-click="startMemBtn(1)" class="start-button"> Numerical Test </span>
+			<span ng-click="startMemBtn(0)" class="start-button"> Image Test </span>
+			<botton onclick="window.location.href = 'home.html';"class="start-button"> Back </botton>
+		</div>
+	</section>
+
+	<section class="mem-page" ng-show="memShow">
+		<!--<div ng-class="class" class="color-text" ng-bind="imageNum"> </div> -->
+		<br>
+		<br>
+				
+			<img src="Data/{{name}}{{imageNum}}.{{type}}" alt="Italian Trulli"width="500" height="400">
+
+		<div class="time" ng-bind="time"> </div>
+		<div class="buttons">
+			<span ng-click="memquit()" class="quit-button"> QUIT </span>
+			<span ng-click="reloadPage()" class="home-button"> HOME </span>
+		</div>
+	</section>
+
+    <section class="mem-check" ng-show="memCheck">
+		<div>
+			Click on option which are in the image! 
+			<br>
+			<br>
+			<span ng-repeat="x in arr1" ng-click="lock1(x)" class="moptions" ng-bind="x">
+		</div>
+		</div><br><br>
+        <div>
+			<span ng-repeat="x in arr2" ng-click="lock2(x)" class="moptions" ng-bind="x">
+            </span>
+        </div><br><br>
+        <div>
+			<span ng-repeat="x in arr3" ng-click="lock3(x)" class="moptions" ng-bind="x">
+            </span>
+        </div><br><br>
+        <div>
+			<span ng-repeat="x in arr4" ng-click="lock4(x)" class="moptions" ng-bind="x">
+            </span>
+        </div>
+
+
+				
+		<div class="buttons">
+				
+			<span ng-click="submit()" class="submit-button"> SUBMIT </span>
+			<span ng-click="reloadPage()" class="home-button"> HOME </span>
+		</div>
+	</section>
+
+
+
+
+
+	<section class="result-page" ng-show="resultShow">
+		
+		<div class = "score" ng-bind="score"></div>
+		<p> OUT OF</p>
+		<div class = "score" ng-bind = "total"></div>
+		<span ng-click="reloadPage()" class="home-button" id="home-button"> HOME </span>
+	</section>
+
+
+</body>
+
+
+<script src="app.js"></script>
+<script type="text/javascript" src="mainController.js"></script>
+</html>
